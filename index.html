@@ -348,7 +348,6 @@
     .contact-link:hover { color: var(--accent); border-color: rgba(0,229,160,0.3); }
     .contact-link-icon { width: 32px; height: 32px; background: var(--surface); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
 
-    /* CURRICULUM BANNER */
     .cv-banner {
       display: flex;
       align-items: center;
@@ -369,7 +368,6 @@
     .cv-banner-arrow { font-size: 22px; color: var(--accent); flex-shrink: 0; transition: transform .2s; }
     .cv-banner:hover .cv-banner-arrow { transform: translateX(4px); }
 
-    /* QR TRIGGER BUTTON */
     .qr-trigger {
       display: flex;
       align-items: center;
@@ -406,7 +404,6 @@
     .qr-trigger-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); }
     .qr-trigger-sub { font-size: 12px; color: var(--muted); }
 
-    /* QR MODAL */
     .qr-modal-overlay {
       position: fixed;
       inset: 0;
@@ -529,7 +526,36 @@
     .qr-modal-whatsapp { background: var(--surface2); color: var(--accent); border: 1px solid rgba(0,229,160,0.3); }
     .qr-modal-whatsapp:hover { background: rgba(0,229,160,0.08); }
 
-    /* FOOTER */
+    /* TRANSLATE BUTTON */
+    #lang-toggle {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 200;
+      background: var(--surface);
+      border: 1px solid rgba(0,229,160,0.4);
+      border-radius: 8px;
+      color: var(--accent);
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 10px 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all .2s;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+    }
+    #lang-toggle:hover {
+      background: rgba(0,229,160,0.08);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0,229,160,0.15);
+    }
+    #lang-toggle .flag { font-size: 16px; }
+
     footer {
       position: relative;
       z-index: 1;
@@ -569,6 +595,7 @@
       .skills-grid { grid-template-columns: 1fr; }
       .contact-inner { grid-template-columns: 1fr; padding: 32px; gap: 40px; }
       .about-stats { grid-template-columns: 1fr 1fr; }
+      #lang-toggle { bottom: 20px; right: 20px; }
     }
   </style>
 </head>
@@ -576,6 +603,12 @@
 
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
+
+  <!-- TRANSLATE BUTTON -->
+  <button id="lang-toggle" aria-label="Toggle language">
+    <span class="flag" id="lang-flag">🇺🇸</span>
+    <span id="lang-label">EN</span>
+  </button>
 
   <!-- QR MODAL -->
   <div class="qr-modal-overlay" id="qr-overlay" role="dialog" aria-modal="true">
@@ -587,9 +620,9 @@
         <div id="qr-modal-canvas"></div>
       </div>
       <div class="qr-modal-number">(12) 98176-5867</div>
-      <p class="qr-modal-hint">Aponte a câmera para ligar ou abrir o WhatsApp</p>
+      <p class="qr-modal-hint" id="qr-hint">Aponte a câmera para ligar ou abrir o WhatsApp</p>
       <div class="qr-modal-actions">
-        <a href="tel:+5512981765867" class="qr-modal-call">Ligar</a>
+        <a href="tel:+5512981765867" class="qr-modal-call" id="qr-call">Ligar</a>
         <a href="https://wa.me/5512981765867" target="_blank" class="qr-modal-whatsapp">WhatsApp</a>
       </div>
     </div>
@@ -599,12 +632,12 @@
   <nav>
     <div class="nav-logo">VM.</div>
     <ul class="nav-links">
-      <li><a href="#about">Sobre</a></li>
-      <li><a href="#experience">Experiência</a></li>
-      <li><a href="#projects">Projetos</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#education">Formação</a></li>
-      <li><a href="#contact">Contato</a></li>
+      <li><a href="#about" data-pt="Sobre" data-en="About">Sobre</a></li>
+      <li><a href="#experience" data-pt="Experiência" data-en="Experience">Experiência</a></li>
+      <li><a href="#projects" data-pt="Projetos" data-en="Projects">Projetos</a></li>
+      <li><a href="#skills" data-pt="Skills" data-en="Skills">Skills</a></li>
+      <li><a href="#education" data-pt="Formação" data-en="Education">Formação</a></li>
+      <li><a href="#contact" data-pt="Contato" data-en="Contact">Contato</a></li>
     </ul>
   </nav>
 
@@ -612,15 +645,15 @@
   <div id="hero">
     <div class="hero-inner">
       <div>
-        <p class="hero-tag">// desenvolvedor web & aplicações</p>
+        <p class="hero-tag" data-pt="// desenvolvedor web & aplicações" data-en="// web developer & applications">// desenvolvedor web & aplicações</p>
         <h1 class="hero-name">
           Vitório<br>
           <span>Motta</span>
         </h1>
-        <p class="hero-sub">Desenvolvedor Web Full Stack</p>
+        <p class="hero-sub" data-pt="Desenvolvedor Web Full Stack" data-en="Full Stack Web Developer">Desenvolvedor Web Full Stack</p>
         <div class="hero-ctas">
-          <a href="#projects" class="btn btn-primary">Ver projetos</a>
-          <a href="#contact" class="btn btn-ghost">Entrar em contato</a>
+          <a href="#projects" class="btn btn-primary" data-pt="Ver projetos" data-en="See projects">Ver projetos</a>
+          <a href="#contact" class="btn btn-ghost" data-pt="Entrar em contato" data-en="Get in touch">Entrar em contato</a>
         </div>
       </div>
       <div class="hero-photo-wrap">
@@ -633,19 +666,28 @@
 
   <!-- ABOUT -->
   <section id="about">
-    <p class="section-label reveal">// sobre mim</p>
-    <h2 class="section-title reveal">Código limpo,<br>soluções reais.</h2>
+    <p class="section-label reveal" data-pt="// sobre mim" data-en="// about me">// sobre mim</p>
+    <h2 class="section-title reveal" data-pt="Código limpo,<br>soluções reais." data-en="Clean code,<br>real solutions.">Código limpo,<br>soluções reais.</h2>
     <div class="about-grid">
       <div class="about-text reveal">
-        <p>Tenho <strong>18 anos</strong> e moro em Caçapava, São Paulo. Concluí o ensino médio integrado ao <strong>Curso Técnico em Informática</strong> no Colégio Comercial de Caçapava e atualmente curso <strong>Análise e Desenvolvimento de Sistemas</strong> no SENAI Taubaté.</p>
-        <p>Desde fevereiro de 2026 trabalho como <strong>desenvolvedor na AvatarSports/Chipvale</strong>, construindo sistemas de cronometragem e websites oficiais para eventos esportivos.</p>
-        <p>Falo <strong>inglês</strong> e me interesso por desenvolvimento web, sistemas e automação.</p>
+        <p data-pt="Tenho <strong>18 anos</strong> e moro em Caçapava, São Paulo. Concluí o ensino médio integrado ao <strong>Curso Técnico em Informática</strong> no Colégio Comercial de Caçapava e atualmente curso <strong>Análise e Desenvolvimento de Sistemas</strong> no SENAI Taubaté."
+           data-en="I am <strong>18 years old</strong> and live in Caçapava, São Paulo. I completed high school integrated with a <strong>Technical Course in IT</strong> at Colégio Comercial de Caçapava and currently study <strong>Systems Analysis and Development</strong> at SENAI Taubaté.">
+          Tenho <strong>18 anos</strong> e moro em Caçapava, São Paulo. Concluí o ensino médio integrado ao <strong>Curso Técnico em Informática</strong> no Colégio Comercial de Caçapava e atualmente curso <strong>Análise e Desenvolvimento de Sistemas</strong> no SENAI Taubaté.
+        </p>
+        <p data-pt="Desde fevereiro de 2026 trabalho como <strong>desenvolvedor na AvatarSports/Chipvale</strong>, construindo sistemas de cronometragem e websites oficiais para eventos esportivos."
+           data-en="Since February 2026, I have been working as a <strong>developer at AvatarSports/Chipvale</strong>, building timing systems and official websites for sports events.">
+          Desde fevereiro de 2026 trabalho como <strong>desenvolvedor na AvatarSports/Chipvale</strong>, construindo sistemas de cronometragem e websites oficiais para eventos esportivos.
+        </p>
+        <p data-pt="Falo <strong>inglês</strong> e me interesso por desenvolvimento web, sistemas e automação."
+           data-en="I speak <strong>English</strong> and am interested in web development, systems, and automation.">
+          Falo <strong>inglês</strong> e me interesso por desenvolvimento web, sistemas e automação.
+        </p>
       </div>
       <div class="about-stats reveal">
-        <div class="stat-card"><div class="stat-num">18</div><div class="stat-desc">anos de idade</div></div>
-        <div class="stat-card"><div class="stat-num">2+</div><div class="stat-desc">anos em TI</div></div>
-        <div class="stat-card"><div class="stat-num">PHP</div><div class="stat-desc">stack principal</div></div>
-        <div class="stat-card"><div class="stat-num">SP</div><div class="stat-desc">Caçapava, Brasil</div></div>
+        <div class="stat-card"><div class="stat-num">18</div><div class="stat-desc" data-pt="anos de idade" data-en="years old">anos de idade</div></div>
+        <div class="stat-card"><div class="stat-num">2+</div><div class="stat-desc" data-pt="anos em TI" data-en="years in IT">anos em TI</div></div>
+        <div class="stat-card"><div class="stat-num">PHP</div><div class="stat-desc" data-pt="stack principal" data-en="main stack">stack principal</div></div>
+        <div class="stat-card"><div class="stat-num">SP</div><div class="stat-desc" data-pt="Caçapava, Brasil" data-en="Caçapava, Brazil">Caçapava, Brasil</div></div>
       </div>
     </div>
   </section>
@@ -654,14 +696,18 @@
 
   <!-- EXPERIENCE -->
   <section id="experience">
-    <p class="section-label reveal">// experiência</p>
-    <h2 class="section-title reveal">Onde trabalhei.</h2>
+    <p class="section-label reveal" data-pt="// experiência" data-en="// experience">// experiência</p>
+    <h2 class="section-title reveal" data-pt="Onde trabalhei." data-en="Where I worked.">Onde trabalhei.</h2>
     <div class="timeline reveal">
       <div class="timeline-item">
-        <div class="timeline-date">Fevereiro 2026 — Presente</div>
-        <div class="timeline-role">Desenvolvedor</div>
+        <div class="timeline-date" data-pt="Fevereiro 2026 — Presente" data-en="February 2026 — Present">Fevereiro 2026 — Presente</div>
+        <div class="timeline-role" data-pt="Desenvolvedor" data-en="Developer">Desenvolvedor</div>
         <div class="timeline-company">AvatarSports / Chipvale</div>
-        <p class="timeline-desc">Desenvolvimento de websites e sistemas voltados para atletas e funcionários de eventos esportivos. Criação de programas de cronometragem e websites oficiais para competições promovidas pela empresa.</p>
+        <p class="timeline-desc"
+           data-pt="Desenvolvimento de websites e sistemas voltados para atletas e funcionários de eventos esportivos. Criação de programas de cronometragem e websites oficiais para competições promovidas pela empresa."
+           data-en="Development of websites and systems for athletes and staff at sports events. Creation of timing software and official websites for competitions organized by the company.">
+          Desenvolvimento de websites e sistemas voltados para atletas e funcionários de eventos esportivos. Criação de programas de cronometragem e websites oficiais para competições promovidas pela empresa.
+        </p>
       </div>
     </div>
   </section>
@@ -670,21 +716,25 @@
 
   <!-- PROJECTS -->
   <section id="projects">
-    <p class="section-label reveal">// projetos</p>
-    <h2 class="section-title reveal">O que construí.</h2>
+    <p class="section-label reveal" data-pt="// projetos" data-en="// projects">// projetos</p>
+    <h2 class="section-title reveal" data-pt="O que construí." data-en="What I built.">O que construí.</h2>
     <div class="projects-grid">
       <a href="https://github.com/vitorio-motta/meus-projetos" target="_blank" class="project-card featured reveal">
         <div>
-          <span class="project-tag">★ projeto destaque</span>
+          <span class="project-tag" data-pt="★ projeto destaque" data-en="★ featured project">★ projeto destaque</span>
           <div class="project-name">Mural de Vagas</div>
-          <p class="project-desc">Sistema web completo de publicação e gerenciamento de vagas de emprego. Conta com cadastro de usuários, área restrita, autenticação e logout — tudo construído em PHP puro com uma interface limpa em CSS.</p>
+          <p class="project-desc"
+             data-pt="Sistema web completo de publicação e gerenciamento de vagas de emprego. Conta com cadastro de usuários, área restrita, autenticação e logout — tudo construído em PHP puro com uma interface limpa em CSS."
+             data-en="Complete web system for publishing and managing job listings. Features user registration, restricted area, authentication and logout — all built in pure PHP with a clean CSS interface.">
+            Sistema web completo de publicação e gerenciamento de vagas de emprego. Conta com cadastro de usuários, área restrita, autenticação e logout — tudo construído em PHP puro com uma interface limpa em CSS.
+          </p>
           <div class="project-stack">
             <span class="stack-tag">PHP</span>
             <span class="stack-tag">CSS</span>
             <span class="stack-tag">MySQL</span>
             <span class="stack-tag">Auth</span>
           </div>
-          <span class="project-link">Ver no GitHub <span>→</span></span>
+          <span class="project-link" data-pt="Ver no GitHub" data-en="View on GitHub">Ver no GitHub <span>→</span></span>
         </div>
         <div style="align-self: center; opacity: 0.08;">
           <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.5">
@@ -701,29 +751,29 @@
 
   <!-- SKILLS -->
   <section id="skills">
-    <p class="section-label reveal">// habilidades</p>
-    <h2 class="section-title reveal">Ferramentas & tech.</h2>
+    <p class="section-label reveal" data-pt="// habilidades" data-en="// skills">// habilidades</p>
+    <h2 class="section-title reveal" data-pt="Ferramentas & tech." data-en="Tools & tech.">Ferramentas & tech.</h2>
     <div class="skills-grid">
       <div class="skill-group reveal">
-        <div class="skill-group-title"><span></span> Desenvolvimento Web</div>
+        <div class="skill-group-title"><span></span> <span data-pt="Desenvolvimento Web" data-en="Web Development">Desenvolvimento Web</span></div>
         <div class="skill-item">PHP <div class="skill-dot active"></div></div>
         <div class="skill-item">HTML5 <div class="skill-dot active"></div></div>
         <div class="skill-item">CSS3 <div class="skill-dot active"></div></div>
         <div class="skill-item">JavaScript <div class="skill-dot"></div></div>
       </div>
       <div class="skill-group reveal">
-        <div class="skill-group-title"><span></span> Sistemas & Infra</div>
+        <div class="skill-group-title"><span></span> <span data-pt="Sistemas & Infra" data-en="Systems & Infra">Sistemas & Infra</span></div>
         <div class="skill-item">Linux CLI <div class="skill-dot active"></div></div>
         <div class="skill-item">Bash / Scripts <div class="skill-dot active"></div></div>
-        <div class="skill-item">Permissões Unix <div class="skill-dot active"></div></div>
+        <div class="skill-item" data-pt="Permissões Unix" data-en="Unix Permissions">Permissões Unix <div class="skill-dot active"></div></div>
         <div class="skill-item">Git / GitHub <div class="skill-dot active"></div></div>
       </div>
       <div class="skill-group reveal">
-        <div class="skill-group-title"><span></span> Ferramentas & Dados</div>
+        <div class="skill-group-title"><span></span> <span data-pt="Ferramentas & Dados" data-en="Tools & Data">Ferramentas & Dados</span></div>
         <div class="skill-item">MySQL <div class="skill-dot active"></div></div>
-        <div class="skill-item">Microsoft Excel Avançado <div class="skill-dot active"></div></div>
-        <div class="skill-item">Inglês <div class="skill-dot active"></div></div>
-        <div class="skill-item">Empregabilidade / Soft Skills <div class="skill-dot active"></div></div>
+        <div class="skill-item" data-pt="Microsoft Excel Avançado" data-en="Microsoft Excel Advanced">Microsoft Excel Avançado <div class="skill-dot active"></div></div>
+        <div class="skill-item" data-pt="Inglês" data-en="English">Inglês <div class="skill-dot active"></div></div>
+        <div class="skill-item" data-pt="Empregabilidade / Soft Skills" data-en="Employability / Soft Skills">Empregabilidade / Soft Skills <div class="skill-dot active"></div></div>
       </div>
     </div>
   </section>
@@ -732,32 +782,44 @@
 
   <!-- EDUCATION -->
   <section id="education">
-    <p class="section-label reveal">// formação</p>
-    <h2 class="section-title reveal">Onde aprendi.</h2>
+    <p class="section-label reveal" data-pt="// formação" data-en="// education">// formação</p>
+    <h2 class="section-title reveal" data-pt="Onde aprendi." data-en="Where I learned.">Onde aprendi.</h2>
     <div class="edu-grid">
       <div class="edu-card reveal">
-        <div class="edu-period">Jan 2026 — Jun 2028</div>
-        <div class="edu-title">Análise e Desenvolvimento de Sistemas</div>
+        <div class="edu-period" data-pt="Jan 2026 — Jun 2028" data-en="Jan 2026 — Jun 2028">Jan 2026 — Jun 2028</div>
+        <div class="edu-title" data-pt="Análise e Desenvolvimento de Sistemas" data-en="Systems Analysis and Development">Análise e Desenvolvimento de Sistemas</div>
         <div class="edu-institution">SENAI Félix Guisard — Taubaté, SP</div>
-        <div class="edu-desc">Graduação superior em ADS, cursando atualmente.</div>
+        <div class="edu-desc" data-pt="Graduação superior em ADS, cursando atualmente." data-en="Higher education degree in SDA, currently enrolled.">Graduação superior em ADS, cursando atualmente.</div>
       </div>
       <div class="edu-card reveal">
-        <div class="edu-period">Jan 2023 — Dez 2025</div>
-        <div class="edu-title">Ensino Médio + Técnico em Informática</div>
+        <div class="edu-period" data-pt="Jan 2023 — Dez 2025" data-en="Jan 2023 — Dec 2025">Jan 2023 — Dez 2025</div>
+        <div class="edu-title" data-pt="Ensino Médio + Técnico em Informática" data-en="High School + Technical Degree in IT">Ensino Médio + Técnico em Informática</div>
         <div class="edu-institution">Colégio Comercial de Caçapava</div>
-        <div class="edu-desc">Ensino médio integrado ao curso técnico de informática, com base sólida em programação e sistemas.</div>
+        <div class="edu-desc"
+             data-pt="Ensino médio integrado ao curso técnico de informática, com base sólida em programação e sistemas."
+             data-en="High school integrated with a technical IT course, with a solid foundation in programming and systems.">
+          Ensino médio integrado ao curso técnico de informática, com base sólida em programação e sistemas.
+        </div>
       </div>
       <div class="edu-card reveal">
-        <div class="edu-period">Mar 2026 · 8h</div>
+        <div class="edu-period" data-pt="Mar 2026 · 8h" data-en="Mar 2026 · 8h">Mar 2026 · 8h</div>
         <div class="edu-title">Linux Unhatched</div>
         <div class="edu-institution">NDG / Cisco Network Academy</div>
-        <div class="edu-desc">Linha de comando Linux, navegação em diretórios, gerenciamento de arquivos, scripts de automação e permissões.</div>
+        <div class="edu-desc"
+             data-pt="Linha de comando Linux, navegação em diretórios, gerenciamento de arquivos, scripts de automação e permissões."
+             data-en="Linux command line, directory navigation, file management, automation scripts, and permissions.">
+          Linha de comando Linux, navegação em diretórios, gerenciamento de arquivos, scripts de automação e permissões.
+        </div>
       </div>
       <div class="edu-card reveal">
-        <div class="edu-period">Set 2024 · 15h</div>
-        <div class="edu-title">Microsoft Excel 2016 — Avançado</div>
+        <div class="edu-period" data-pt="Set 2024 · 15h" data-en="Sep 2024 · 15h">Set 2024 · 15h</div>
+        <div class="edu-title" data-pt="Microsoft Excel 2016 — Avançado" data-en="Microsoft Excel 2016 — Advanced">Microsoft Excel 2016 — Avançado</div>
         <div class="edu-institution">Fundação Bradesco</div>
-        <div class="edu-desc">Planilhas, fórmulas, funções, gráficos e tabelas dinâmicas para análise de dados.</div>
+        <div class="edu-desc"
+             data-pt="Planilhas, fórmulas, funções, gráficos e tabelas dinâmicas para análise de dados."
+             data-en="Spreadsheets, formulas, functions, charts, and pivot tables for data analysis.">
+          Planilhas, fórmulas, funções, gráficos e tabelas dinâmicas para análise de dados.
+        </div>
       </div>
     </div>
   </section>
@@ -768,14 +830,17 @@
   <section id="contact">
     <div class="contact-inner reveal">
       <div class="contact-text">
-        <p class="section-label">// contato</p>
-        <h2 class="section-title">Vamos trabalhar juntos?</h2>
-        <p>Estou aberto a oportunidades de trabalho, projetos freelance e colaborações. Manda uma mensagem!</p>
-        <a href="mailto:vitorioemailprofissional@gmail.com" class="btn btn-primary">Enviar e-mail</a>
+        <p class="section-label" data-pt="// contato" data-en="// contact">// contato</p>
+        <h2 class="section-title" data-pt="Vamos trabalhar juntos?" data-en="Let's work together?">Vamos trabalhar juntos?</h2>
+        <p data-pt="Estou aberto a oportunidades de trabalho, projetos freelance e colaborações. Manda uma mensagem!"
+           data-en="I'm open to job opportunities, freelance projects, and collaborations. Send me a message!">
+          Estou aberto a oportunidades de trabalho, projetos freelance e colaborações. Manda uma mensagem!
+        </p>
+        <a href="mailto:vitorioemailprofissional@gmail.com" class="btn btn-primary" data-pt="Enviar e-mail" data-en="Send email">Enviar e-mail</a>
         <a href="Vitório_Fraga_Motta.pdf" download class="cv-banner">
           <div class="cv-banner-text">
-            <span class="cv-banner-label">// currículo</span>
-            <span class="cv-banner-phrase">Me conheça melhor e me divulgue ↗</span>
+            <span class="cv-banner-label" data-pt="// currículo" data-en="// résumé">// currículo</span>
+            <span class="cv-banner-phrase" data-pt="Me conheça melhor e me divulgue ↗" data-en="Get to know me better and share ↗">Me conheça melhor e me divulgue ↗</span>
           </div>
           <span class="cv-banner-arrow">⬇</span>
         </a>
@@ -786,13 +851,12 @@
           vitorioemailprofissional@gmail.com
         </a>
 
-        <!-- QR TRIGGER -->
         <button class="qr-trigger" id="qr-open-btn">
           <div class="qr-trigger-thumb">
             <div id="qr-thumb"></div>
           </div>
           <div class="qr-trigger-info">
-            <span class="qr-trigger-label">Ver QR Code</span>
+            <span class="qr-trigger-label" data-pt="Ver QR Code" data-en="View QR Code">Ver QR Code</span>
             <span class="qr-trigger-sub">(12) 98176-5867</span>
           </div>
         </button>
@@ -810,7 +874,7 @@
   </section>
 
   <footer>
-    <span>© 2026 Vitório Fraga Motta · Vila Santos, Caçapava — SP</span>
+    <span data-pt="© 2026 Vitório Fraga Motta · Vila Santos, Caçapava — SP" data-en="© 2026 Vitório Fraga Motta · Vila Santos, Caçapava — SP">© 2026 Vitório Fraga Motta · Vila Santos, Caçapava — SP</span>
   </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
@@ -831,48 +895,77 @@
       document.querySelector('.orb-2').style.transform = `translate(${-x * 0.5}px, ${-y * 0.5}px)`;
     });
 
-    // QR miniatura no botão
+    // QR codes
     new QRCode(document.getElementById('qr-thumb'), {
       text: 'tel:+5512981765867',
-      width: 38,
-      height: 38,
-      colorDark: '#000000',
-      colorLight: '#ffffff',
+      width: 38, height: 38,
+      colorDark: '#000000', colorLight: '#ffffff',
       correctLevel: QRCode.CorrectLevel.M
     });
 
-    // QR grande no modal
     new QRCode(document.getElementById('qr-modal-canvas'), {
       text: 'tel:+5512981765867',
-      width: 220,
-      height: 220,
-      colorDark: '#111111',
-      colorLight: '#ffffff',
+      width: 220, height: 220,
+      colorDark: '#111111', colorLight: '#ffffff',
       correctLevel: QRCode.CorrectLevel.M
     });
 
-    // Modal logic
+    // QR Modal
     const overlay = document.getElementById('qr-overlay');
     const openBtn = document.getElementById('qr-open-btn');
     const closeBtn = document.getElementById('qr-close');
 
-    function openModal() {
-      overlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal() {
-      overlay.classList.remove('open');
-      document.body.style.overflow = '';
-    }
+    function openModal() { overlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function closeModal() { overlay.classList.remove('open'); document.body.style.overflow = ''; }
 
     openBtn.addEventListener('click', openModal);
     closeBtn.addEventListener('click', closeModal);
-    overlay.addEventListener('click', e => {
-      if (e.target === overlay) closeModal();
-    });
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closeModal();
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    // ── LANGUAGE TOGGLE ──────────────────────────────────────────
+    let currentLang = 'pt';
+
+    const translations = {
+      'qr-hint': { pt: 'Aponte a câmera para ligar ou abrir o WhatsApp', en: 'Point your camera to call or open WhatsApp' },
+      'qr-call': { pt: 'Ligar', en: 'Call' }
+    };
+
+    function applyLang(lang) {
+      // Elements with data-pt / data-en (text content)
+      document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+        const val = el.getAttribute('data-' + lang);
+        // Check if it has HTML tags
+        if (val && val.includes('<')) {
+          el.innerHTML = val;
+        } else if (val) {
+          // For skill-item elements that have a child .skill-dot, preserve it
+          const dot = el.querySelector('.skill-dot');
+          if (dot) {
+            el.childNodes[0].textContent = val + ' ';
+          } else {
+            el.textContent = val;
+          }
+        }
+      });
+
+      // Special elements by id
+      Object.entries(translations).forEach(([id, texts]) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = texts[lang];
+      });
+
+      // Button label
+      document.getElementById('lang-label').textContent = lang === 'pt' ? 'EN' : 'PT';
+      document.getElementById('lang-flag').textContent = lang === 'pt' ? '🇺🇸' : '🇧🇷';
+
+      // html lang attribute
+      document.documentElement.lang = lang === 'pt' ? 'en' : 'pt-BR';
+    }
+
+    document.getElementById('lang-toggle').addEventListener('click', () => {
+      currentLang = currentLang === 'pt' ? 'en' : 'pt';
+      applyLang(currentLang);
     });
   </script>
 </body>
