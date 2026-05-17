@@ -82,10 +82,13 @@
     .edu-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
     .edu-card { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:28px; transition:border-color .2s,transform .2s; }
     .edu-card:hover { border-color:rgba(0,229,160,0.3); transform:translateY(-2px); }
+    .edu-card.badge { border-color:rgba(0,229,160,0.2); background:linear-gradient(135deg,var(--surface),rgba(0,229,160,0.04)); }
+    .edu-card.badge:hover { border-color:var(--accent); }
     .edu-period { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
     .edu-title { font-family:'Syne',sans-serif; font-size:16px; font-weight:700; color:var(--text); margin-bottom:4px; }
     .edu-institution { font-size:12px; color:var(--muted); margin-bottom:12px; }
     .edu-desc { font-size:12px; color:var(--muted); }
+    .badge-pill { display:inline-block; font-size:9px; letter-spacing:2px; text-transform:uppercase; background:rgba(0,229,160,0.12); color:var(--accent); border:1px solid rgba(0,229,160,0.3); padding:3px 8px; border-radius:2px; margin-bottom:10px; }
     #contact { padding-top:120px; padding-bottom:160px; }
     .contact-inner { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:64px; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
     .contact-text .section-title { margin-bottom:16px; }
@@ -101,7 +104,6 @@
     .cv-banner-phrase { font-family:'Syne',sans-serif; font-size:15px; font-weight:700; color:var(--text); }
     .cv-banner-arrow { font-size:22px; color:var(--accent); flex-shrink:0; transition:transform .2s; }
     .cv-banner:hover .cv-banner-arrow { transform:translateX(4px); }
-    /* QR card */
     .qr-card-btn { display:flex; align-items:center; gap:14px; color:var(--muted); background:var(--surface2); border:1px solid var(--border); border-radius:6px; padding:12px 16px; cursor:pointer; width:100%; text-align:left; font-family:'DM Mono',monospace; font-size:13px; transition:color .2s,border-color .2s,transform .15s; }
     .qr-card-btn:hover { color:var(--accent); border-color:rgba(0,229,160,0.3); transform:translateY(-1px); }
     .qr-thumb-wrap { width:46px; height:46px; flex-shrink:0; background:#fff; border-radius:4px; padding:3px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
@@ -112,7 +114,6 @@
     .qr-label { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--accent); }
     .qr-number { font-size:13px; color:var(--text); }
     .qr-hint { font-size:10px; color:var(--muted); margin-top:1px; }
-    /* MODAL */
     #qr-modal { position:fixed; inset:0; z-index:1000; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .25s ease; }
     #qr-modal.open { opacity:1; pointer-events:all; }
     .modal-backdrop { position:absolute; inset:0; background:rgba(5,6,8,0.82); backdrop-filter:blur(8px); }
@@ -150,7 +151,7 @@
       <p class="modal-eyebrow">// contato direto</p>
       <p class="modal-title">Escaneie e <span>fale comigo</span></p>
       <div class="modal-qr-wrap">
-        <canvas id="qr-modal-canvas"></canvas>
+        <img id="qr-modal-canvas" src="Meu contato!.png" alt="QR Code de contato" style="display:block;width:220px;height:220px;object-fit:contain;" />
       </div>
       <p class="modal-sub">(12) 98176-5867 &middot; Vit&oacute;rio Motta</p>
       <div class="modal-actions">
@@ -186,7 +187,7 @@
         </div>
       </div>
       <div class="hero-photo-wrap">
-        <img src="https://media.licdn.com/dms/image/v2/D4D03AQFz-RpJ_Heivg/profile-displayphoto-scale_400_400/B4DZz4x2a1IAAg-/0/1773700345461?e=1778112000&v=beta&t=MOm3YiCZnGOGfD9coFYTcUUENbVd0b2KZ0yFWQGYtTc" alt="Vit&oacute;rio Motta" class="hero-photo" />
+        <img src="1773700345461.jpg" alt="Vit&oacute;rio Motta" class="hero-photo" />
       </div>
     </div>
   </div>
@@ -236,7 +237,6 @@
     <h2 class="section-title reveal">O que constru&iacute;.</h2>
     <div class="projects-grid">
 
-      <!-- MURAL DE VAGAS -->
       <a href="https://github.com/vitorio-motta/meus-projetos" target="_blank" class="project-card reveal">
         <span class="project-tag">&#9733; projeto pessoal</span>
         <div class="project-name">Mural de Vagas</div>
@@ -247,7 +247,6 @@
         <span class="project-link">Ver no GitHub <span>&rarr;</span></span>
       </a>
 
-      <!-- LOJA DE ROUPAS TCC -->
       <a href="https://github.com/vitorio-motta/Loja-de-Roupas" target="_blank" class="project-card reveal">
         <span class="project-tag">&#127894; TCC &mdash; ensino m&eacute;dio</span>
         <div class="project-name">Loja de Roupas</div>
@@ -286,8 +285,8 @@
         <div class="skill-group-title"><span></span> Ferramentas &amp; Dados</div>
         <div class="skill-item">MySQL<div class="skill-dot active"></div></div>
         <div class="skill-item">Excel Avan&ccedil;ado<div class="skill-dot active"></div></div>
+        <div class="skill-item">Prompt Design / IA<div class="skill-dot active"></div></div>
         <div class="skill-item">Ingl&ecirc;s<div class="skill-dot active"></div></div>
-        <div class="skill-item">Soft Skills<div class="skill-dot active"></div></div>
       </div>
     </div>
   </section>
@@ -311,6 +310,16 @@
         <div class="edu-institution">Col&eacute;gio Comercial de Ca&ccedil;apava</div>
         <div class="edu-desc">Ensino m&eacute;dio integrado ao curso t&eacute;cnico de inform&aacute;tica.</div>
       </div>
+
+      <!-- NOVO: Prompt Design in Vertex AI -->
+      <div class="edu-card badge reveal">
+        <div class="badge-pill">&#127381; Google Cloud Skill Badge</div>
+        <div class="edu-period">Maio 2026 &middot; Skill Badge</div>
+        <div class="edu-title">Prompt Design in Vertex AI</div>
+        <div class="edu-institution">Google Cloud</div>
+        <div class="edu-desc">Cria&ccedil;&atilde;o de prompts eficazes para modelos de IA generativa na plataforma Vertex AI, incluindo t&eacute;cnicas de engenharia de prompt para diferentes casos de uso.</div>
+      </div>
+
       <div class="edu-card reveal">
         <div class="edu-period">Mar 2026 &middot; 8h</div>
         <div class="edu-title">Linux Unhatched</div>
@@ -322,6 +331,12 @@
         <div class="edu-title">Microsoft Excel 2016 &mdash; Avan&ccedil;ado</div>
         <div class="edu-institution">Funda&ccedil;&atilde;o Bradesco</div>
         <div class="edu-desc">Planilhas, f&oacute;rmulas, gr&aacute;ficos e tabelas din&acirc;micas.</div>
+      </div>
+      <div class="edu-card reveal">
+        <div class="edu-period">Nov&ndash;Dez 2024 &middot; 15h</div>
+        <div class="edu-title">Curso de Empregabilidade</div>
+        <div class="edu-institution">GAMT</div>
+        <div class="edu-desc">Habilidades para conseguir e manter um emprego: entrevistas, networking e postura profissional.</div>
       </div>
     </div>
   </section>
@@ -336,7 +351,7 @@
         <h2 class="section-title">Vamos trabalhar juntos?</h2>
         <p>Estou aberto a oportunidades de trabalho, projetos freelance e colabora&ccedil;&otilde;es. Manda uma mensagem!</p>
         <a href="mailto:vitorioemailprofissional@gmail.com" class="btn btn-primary">Enviar e-mail</a>
-        <a href="Vitório_Fraga_Motta.pdf" download class="cv-banner">
+        <a href="Vitorio Fraga Motta.pdf" download class="cv-banner">
           <div class="cv-banner-text">
             <span class="cv-banner-label">// curr&iacute;culo</span>
             <span class="cv-banner-phrase">Me conhe&ccedil;a melhor e me divulgue &uarr;</span>
@@ -349,9 +364,8 @@
           <div class="contact-link-icon">&#9993;</div>
           vitorioemailprofissional@gmail.com
         </a>
-        <!-- QR CARD clicavel -->
         <button class="qr-card-btn" id="open-qr-btn" aria-label="Abrir QR Code de telefone">
-          <div class="qr-thumb-wrap"><canvas id="qr-thumb"></canvas></div>
+          <div class="qr-thumb-wrap"><img id="qr-thumb" src="Meu contato!.png" alt="QR Code" style="width:40px;height:40px;object-fit:contain;" /></div>
           <div class="qr-info">
             <span class="qr-label">&#128242; Telefone / WhatsApp</span>
             <span class="qr-number">(12) 98176-5867</span>
@@ -372,23 +386,7 @@
 
   <footer><span>&copy; 2026 Vit&oacute;rio Fraga Motta</span></footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-  <script>
-    var QR_TEXT = 'tel:+5512981765867';
-
-    new QRCode(document.getElementById('qr-thumb'), {
-      text: QR_TEXT, width: 40, height: 40,
-      colorDark: '#000', colorLight: '#fff',
-      correctLevel: QRCode.CorrectLevel.M
-    });
-
-    new QRCode(document.getElementById('qr-modal-canvas'), {
-      text: QR_TEXT, width: 220, height: 220,
-      colorDark: '#000', colorLight: '#fff',
-      correctLevel: QRCode.CorrectLevel.H
-    });
-
-    var modal    = document.getElementById('qr-modal');
+  <script>    var modal    = document.getElementById('qr-modal');
     var openBtn  = document.getElementById('open-qr-btn');
     var closeBtn = document.getElementById('modal-close-btn');
     var backdrop = document.getElementById('modal-backdrop');
